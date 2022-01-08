@@ -12,25 +12,31 @@ struct GameStreamAuthInput<Content: View>: View {
     let title: String
     let placeholderText: String
     let showPlaceholder: Bool
+    let inputTextColor: Color
     
     init(
         title: String,
         placeholderText: String,
         showPlaceholder: Bool,
         aligment: Alignment = .leading,
+        inputTextColor: Color = Color.black,
         input: @escaping () -> Content
     ) {
         self.input = input
         self.title = title
         self.placeholderText = placeholderText
         self.showPlaceholder = showPlaceholder
+        self.inputTextColor = inputTextColor
     }
     var body: some View {
         Text(title)
             .foregroundColor(Color("dark_cyan"))
         
         ZStack(alignment: .leading){
-            input().placeholder(
+            input()
+                .frame(width: .infinity)
+                .foregroundColor(inputTextColor)
+                .placeholder(
                 when: self.showPlaceholder
             ) {
                 Text(self.placeholderText)
