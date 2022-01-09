@@ -3,15 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D6AE170278291130086F7B5 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6AE16F278291130086F7B5 /* Home.swift */; };
+		5D6AE170278291130086F7B5 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6AE16F278291130086F7B5 /* MainScreen.swift */; };
 		5D8345B8277CB6D1004020F3 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8345B7277CB6D1004020F3 /* ViewExtensions.swift */; };
 		5D8345BA277CB843004020F3 /* GameStreamAuthInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8345B9277CB843004020F3 /* GameStreamAuthInput.swift */; };
 		5D8345BC277CEBA9004020F3 /* GrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8345BB277CEBA9004020F3 /* GrayButton.swift */; };
 		5D87CF0F27849F5D008D6446 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D87CF0E27849F5D008D6446 /* HomeScreen.swift */; };
+		5D87CF11278913E1008D6446 /* GamesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D87CF10278913E1008D6446 /* GamesListScreen.swift */; };
+		5D87CF1627891AC8008D6446 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D87CF1527891AC8008D6446 /* Model.swift */; };
+		5D87CF182789D53F008D6446 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D87CF172789D53F008D6446 /* ViewModel.swift */; };
+		5D87CF1B278B1DCC008D6446 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5D87CF1A278B1DCC008D6446 /* Kingfisher */; };
+		5D87CF1D278B5807008D6446 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D87CF1C278B5807008D6446 /* GameScreen.swift */; };
 		5D8FEC14277BF579007791A2 /* GameStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8FEC13277BF579007791A2 /* GameStreamApp.swift */; };
 		5D8FEC16277BF579007791A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8FEC15277BF579007791A2 /* ContentView.swift */; };
 		5D8FEC18277BF579007791A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D8FEC17277BF579007791A2 /* Assets.xcassets */; };
@@ -19,11 +24,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5D6AE16F278291130086F7B5 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		5D6AE16F278291130086F7B5 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		5D8345B7277CB6D1004020F3 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		5D8345B9277CB843004020F3 /* GameStreamAuthInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStreamAuthInput.swift; sourceTree = "<group>"; };
 		5D8345BB277CEBA9004020F3 /* GrayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayButton.swift; sourceTree = "<group>"; };
 		5D87CF0E27849F5D008D6446 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		5D87CF10278913E1008D6446 /* GamesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListScreen.swift; sourceTree = "<group>"; };
+		5D87CF1527891AC8008D6446 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5D87CF172789D53F008D6446 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		5D87CF1C278B5807008D6446 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		5D8FEC10277BF579007791A2 /* GameStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8FEC13277BF579007791A2 /* GameStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStreamApp.swift; sourceTree = "<group>"; };
 		5D8FEC15277BF579007791A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,12 +46,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D87CF1B278B1DCC008D6446 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D87CF1227891898008D6446 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D8345B7277CB6D1004020F3 /* ViewExtensions.swift */,
+				5D8345B9277CB843004020F3 /* GameStreamAuthInput.swift */,
+				5D8345BB277CEBA9004020F3 /* GrayButton.swift */,
+				5D6AE16F278291130086F7B5 /* MainScreen.swift */,
+				5D87CF0E27849F5D008D6446 /* HomeScreen.swift */,
+				5D87CF10278913E1008D6446 /* GamesListScreen.swift */,
+				5D8FEC15277BF579007791A2 /* ContentView.swift */,
+				5D87CF1C278B5807008D6446 /* GameScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D87CF13278918C7008D6446 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5D87CF1527891AC8008D6446 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5D87CF14278919F7008D6446 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5D87CF172789D53F008D6446 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5D8FEC07277BF579007791A2 = {
 			isa = PBXGroup;
 			children = (
@@ -62,16 +103,13 @@
 		5D8FEC12277BF579007791A2 /* GameStream */ = {
 			isa = PBXGroup;
 			children = (
+				5D87CF14278919F7008D6446 /* ViewModel */,
+				5D87CF13278918C7008D6446 /* Model */,
+				5D87CF1227891898008D6446 /* View */,
 				5D8FEC13277BF579007791A2 /* GameStreamApp.swift */,
-				5D8FEC15277BF579007791A2 /* ContentView.swift */,
 				5D8FEC17277BF579007791A2 /* Assets.xcassets */,
 				5D8FEC1C277BF579007791A2 /* Info.plist */,
 				5D8FEC19277BF579007791A2 /* Preview Content */,
-				5D8345B7277CB6D1004020F3 /* ViewExtensions.swift */,
-				5D8345B9277CB843004020F3 /* GameStreamAuthInput.swift */,
-				5D8345BB277CEBA9004020F3 /* GrayButton.swift */,
-				5D6AE16F278291130086F7B5 /* Home.swift */,
-				5D87CF0E27849F5D008D6446 /* HomeScreen.swift */,
 			);
 			path = GameStream;
 			sourceTree = "<group>";
@@ -100,6 +138,9 @@
 			dependencies = (
 			);
 			name = GameStream;
+			packageProductDependencies = (
+				5D87CF1A278B1DCC008D6446 /* Kingfisher */,
+			);
 			productName = GameStream;
 			productReference = 5D8FEC10277BF579007791A2 /* GameStream.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +168,9 @@
 				Base,
 			);
 			mainGroup = 5D8FEC07277BF579007791A2;
+			packageReferences = (
+				5D87CF19278B1DCC008D6446 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 5D8FEC11277BF579007791A2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,12 +197,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D87CF1D278B5807008D6446 /* GameScreen.swift in Sources */,
+				5D87CF182789D53F008D6446 /* ViewModel.swift in Sources */,
+				5D87CF1627891AC8008D6446 /* Model.swift in Sources */,
 				5D8FEC16277BF579007791A2 /* ContentView.swift in Sources */,
 				5D8345B8277CB6D1004020F3 /* ViewExtensions.swift in Sources */,
 				5D87CF0F27849F5D008D6446 /* HomeScreen.swift in Sources */,
 				5D8345BA277CB843004020F3 /* GameStreamAuthInput.swift in Sources */,
 				5D8345BC277CEBA9004020F3 /* GrayButton.swift in Sources */,
-				5D6AE170278291130086F7B5 /* Home.swift in Sources */,
+				5D87CF11278913E1008D6446 /* GamesListScreen.swift in Sources */,
+				5D6AE170278291130086F7B5 /* MainScreen.swift in Sources */,
 				5D8FEC14277BF579007791A2 /* GameStreamApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D87CF19278B1DCC008D6446 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D87CF1A278B1DCC008D6446 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D87CF19278B1DCC008D6446 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D8FEC08277BF579007791A2 /* Project object */;
 }

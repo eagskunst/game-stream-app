@@ -138,7 +138,7 @@ struct LogInView: View {
                 }.padding(.top)
             }.frame(width: .infinity)
             NavigationLink(
-                destination: Home(),
+                destination: MainScreen(),
                 isActive: $isAuthenticated,
                 label: {
                     EmptyView()

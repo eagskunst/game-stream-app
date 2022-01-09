@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Home: View {
+struct MainScreen: View {
     
     @State var selectedTab = 0
     
@@ -27,10 +27,7 @@ struct Home: View {
                     Text("Inicio")
                 }.tag(0)
             
-            Text("Juegos")
-                .font(
-                    .system(size: 30, weight: .bold, design: .rounded)
-                )
+            GamesListScreen()
                 .tabItem {
                     Image(systemName: "gamecontroller")
                     Text("Juegos")
@@ -57,8 +54,8 @@ struct Home: View {
     }
 }
 
-struct Home_Previews: PreviewProvider {
+struct MainScreen_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        MainScreen()
     }
 }
