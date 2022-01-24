@@ -104,21 +104,7 @@ struct LogInView: View {
                     .padding(.bottom)
                 Button(action: logIn, label: {
                     Text("Iniciar sesión".uppercased())
-                        .bold()
-                        .foregroundColor(Color.white)
-                        .frame(
-                            maxWidth: .infinity,
-                            alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .padding(EdgeInsets(
-                                    top: 11,
-                                    leading: 18,
-                                    bottom: 11,
-                                    trailing: 18))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6.0)
-                                .stroke(Color("dark_cyan"), lineWidth: 1.0)
-                                .shadow(radius: 6)
-                        )
+                        .borderBackgroundlessStyle()
                 }).padding(.bottom, 40)
                 
                 
@@ -239,21 +225,7 @@ struct SignUpView: View {
 
                     Button(action: signUp, label: {
                         Text("Regístrate".uppercased())
-                            .bold()
-                            .foregroundColor(Color.white)
-                            .frame(
-                                maxWidth: .infinity,
-                                alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .padding(EdgeInsets(
-                                        top: 11,
-                                        leading: 18,
-                                        bottom: 11,
-                                        trailing: 18))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6.0)
-                                    .stroke(Color("dark_cyan"), lineWidth: 1.0)
-                                    .shadow(radius: 6)
-                            )
+                            .borderBackgroundlessStyle()
                     }).padding(.bottom, 40)
                     
                     

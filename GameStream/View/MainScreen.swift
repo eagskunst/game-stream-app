@@ -12,10 +12,13 @@ struct MainScreen: View {
     @State var selectedTab = 0
     
     init() {
-        let appearance = UITabBar.appearance()
-        appearance.barTintColor = UIColor(Color("tabbar_color"))
-        appearance.unselectedItemTintColor = .gray
-        appearance.isTranslucent = true
+        let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
+        tabBarAppearance.backgroundColor = UIColor(Color("tabbar_color"))
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        }
         print("initiating home views")
     }
     
@@ -33,24 +36,19 @@ struct MainScreen: View {
                     Text("Juegos")
                 }.tag(1)
             
-            Text("Favoritos")
-                .font(
-                    .system(size: 30, weight: .bold, design: .rounded)
-                )
+            FavoritesScreen()
                 .tabItem {
                     Image(systemName: "heart")
                     Text("Favoritos")
                 }.tag(2)
             
-            Text("Perfil")
-                .font(
-                    .system(size: 30, weight: .bold, design: .rounded)
-                )
+            ProfileScreen()
                 .tabItem {
                     Image(systemName: "person")
                     Text("Perfil")
                 }.tag(3)
         }.accentColor(.white)
+            
     }
 }
 

@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct SearchedGames: Codable {
+    var results: [Game]
+}
+
 struct Game: Codable, Hashable {
     var title: String
     var studio: String

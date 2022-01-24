@@ -28,6 +28,32 @@ struct GameViewObject {
         tags = game.tags
         imgUrls = game.galleryImages
     }
+    
+    init(url: String,
+         title: String,
+         studio: String,
+         calification: String,
+         pubYear: String,
+         description: String,
+         tags: [String],
+         imgUrls: [String]) {
+        let game = Game(
+            title: title,
+            studio: studio,
+            contentRaiting: calification,
+            publicationYear: pubYear,
+            description: description,
+            platforms: [],
+            tags: tags,
+            videosUrls: VideoUrl(mobile: url, tablet: ""),
+            galleryImages: imgUrls
+        )
+        self.init(game: game)
+    }
+    
+    func getBasicInfo(separator: String = "-") -> String {
+        return "\(studio) \(separator) \(calification) \(separator) \(pubYear)"
+    }
 }
 
 struct GamesListScreen: View {
@@ -71,12 +97,14 @@ struct GamesListScreen: View {
                 }
             }.padding(.horizontal, 6)
             
-            NavigationLink(
-                destination: GameScreen(),
-                isActive: $isGameViewActive,
-                label: {
-                    EmptyView()
-                })
+            if let game = gameVO {
+                NavigationLink(
+                    destination: GameScreen(gameVO: game),
+                    isActive: $isGameViewActive,
+                    label: {
+                        EmptyView()
+                    })
+            }
         }.navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
     }
