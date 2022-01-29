@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ProfileScreen: View {
-    @State var userName = "Usu Ario"
+    @ObservedObject var userDataSaver = UserDataSaver()
+    
+    @State var profileImage: UIImage? = UIImage(named: "profilePicPlaceholder")
+    
+    let profileImageRetriever = ProfileImageRetriever()
+
     var body: some View {
         ZStack {
             Color("bg_color")
@@ -26,12 +31,12 @@ struct ProfileScreen: View {
                     )
                     .padding()
                 VStack {
-                    Image("profilePicPlaceholder")
+                    Image(uiImage: profileImage!)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 118.0, height: 118.0, alignment: .center)
                         .clipShape(Circle())
-                    Text(userName)
+                    Text(userDataSaver.userName)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                 }.padding(EdgeInsets(top: 0, leading: 0, bottom: 32, trailing: 0))
@@ -50,6 +55,12 @@ struct ProfileScreen: View {
             }
         }.onAppear(perform: {
             print("on appear profile")
+            let _ = userDataSaver.getData()
+            if let savedImage = profileImageRetriever.retrieveUiImage(named: "profile_photo") {
+                profileImage = savedImage
+            } else {
+                print("No saved image")
+            }
         })
     }
 }

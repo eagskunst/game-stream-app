@@ -12,6 +12,7 @@
 		5D034071279E1EAD003BC4F1 /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D034070279E1EAD003BC4F1 /* TextExtensions.swift */; };
 		5D034073279E25A9003BC4F1 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D034072279E25A9003BC4F1 /* ColorExtensions.swift */; };
 		5D2A9519279EF326006F1CAA /* UserDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A9518279EF326006F1CAA /* UserDataSaver.swift */; };
+		5D2A951B279F01A5006F1CAA /* SignUpFormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A951A279F01A5006F1CAA /* SignUpFormValidator.swift */; };
 		5D6AE170278291130086F7B5 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6AE16F278291130086F7B5 /* MainScreen.swift */; };
 		5D8345B8277CB6D1004020F3 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8345B7277CB6D1004020F3 /* ViewExtensions.swift */; };
 		5D8345BA277CB843004020F3 /* GameStreamAuthInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8345B9277CB843004020F3 /* GameStreamAuthInput.swift */; };
@@ -29,6 +30,8 @@
 		5D8FEC1B277BF579007791A2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D8FEC1A277BF579007791A2 /* Preview Assets.xcassets */; };
 		5DBE688C278E42980026F005 /* SearchGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBE688B278E42980026F005 /* SearchGameViewModel.swift */; };
 		5DC67CE6279D9EEA009196BE /* FavoritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC67CE5279D9EEA009196BE /* FavoritesScreen.swift */; };
+		5DEC13AD27A0C12D009D0576 /* SUImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC13AC27A0C12D009D0576 /* SUImagePickerView.swift */; };
+		5DEC13AF27A0CC43009D0576 /* ProfileImageRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC13AE27A0CC43009D0576 /* ProfileImageRetriever.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,7 @@
 		5D034070279E1EAD003BC4F1 /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
 		5D034072279E25A9003BC4F1 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		5D2A9518279EF326006F1CAA /* UserDataSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSaver.swift; sourceTree = "<group>"; };
+		5D2A951A279F01A5006F1CAA /* SignUpFormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormValidator.swift; sourceTree = "<group>"; };
 		5D6AE16F278291130086F7B5 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		5D8345B7277CB6D1004020F3 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		5D8345B9277CB843004020F3 /* GameStreamAuthInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStreamAuthInput.swift; sourceTree = "<group>"; };
@@ -55,6 +59,8 @@
 		5D8FEC1C277BF579007791A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DBE688B278E42980026F005 /* SearchGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGameViewModel.swift; sourceTree = "<group>"; };
 		5DC67CE5279D9EEA009196BE /* FavoritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreen.swift; sourceTree = "<group>"; };
+		5DEC13AC27A0C12D009D0576 /* SUImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SUImagePickerView.swift; path = ../../../SUImagePickerView/SUImagePickerView/SUImagePickerView.swift; sourceTree = "<group>"; };
+		5DEC13AE27A0CC43009D0576 /* ProfileImageRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageRetriever.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,7 @@
 		5D87CF1227891898008D6446 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5DEC13AC27A0C12D009D0576 /* SUImagePickerView.swift */,
 				5D8345B7277CB6D1004020F3 /* ViewExtensions.swift */,
 				5D8345B9277CB843004020F3 /* GameStreamAuthInput.swift */,
 				5D8345BB277CEBA9004020F3 /* GrayButton.swift */,
@@ -104,6 +111,8 @@
 				5D2A9518279EF326006F1CAA /* UserDataSaver.swift */,
 				5D87CF172789D53F008D6446 /* GamesViewModel.swift */,
 				5DBE688B278E42980026F005 /* SearchGameViewModel.swift */,
+				5D2A951A279F01A5006F1CAA /* SignUpFormValidator.swift */,
+				5DEC13AE27A0CC43009D0576 /* ProfileImageRetriever.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -221,11 +230,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D2A951B279F01A5006F1CAA /* SignUpFormValidator.swift in Sources */,
 				5D87CF1D278B5807008D6446 /* GameScreen.swift in Sources */,
 				5D87CF182789D53F008D6446 /* GamesViewModel.swift in Sources */,
 				5D87CF1627891AC8008D6446 /* Model.swift in Sources */,
 				5D8FEC16277BF579007791A2 /* ContentView.swift in Sources */,
 				5D034069279DA80E003BC4F1 /* ProfileScreen.swift in Sources */,
+				5DEC13AF27A0CC43009D0576 /* ProfileImageRetriever.swift in Sources */,
 				5D034073279E25A9003BC4F1 /* ColorExtensions.swift in Sources */,
 				5D8345B8277CB6D1004020F3 /* ViewExtensions.swift in Sources */,
 				5D2A9519279EF326006F1CAA /* UserDataSaver.swift in Sources */,
@@ -237,6 +248,7 @@
 				5D8345BC277CEBA9004020F3 /* GrayButton.swift in Sources */,
 				5D87CF11278913E1008D6446 /* GamesListScreen.swift in Sources */,
 				5D6AE170278291130086F7B5 /* MainScreen.swift in Sources */,
+				5DEC13AD27A0C12D009D0576 /* SUImagePickerView.swift in Sources */,
 				5DC67CE6279D9EEA009196BE /* FavoritesScreen.swift in Sources */,
 				5DBE688C278E42980026F005 /* SearchGameViewModel.swift in Sources */,
 				5D8FEC14277BF579007791A2 /* GameStreamApp.swift in Sources */,

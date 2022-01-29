@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct EditProfileScreen: View {
+    
+    @State var profileImage: Image? = Image("profilePicPlaceholder")
+    @State var isCameraActive = false
+    let profileImageRetriever = ProfileImageRetriever()
+    
     var body: some View {
         ZStack {
             Color("bg_color")
@@ -19,21 +24,31 @@ struct EditProfileScreen: View {
                         .foregroundColor(.white)
                         .bold()
                         .padding(.vertical)
-                    Button(action: {}, label: {
+                    Button(action: {
+                        isCameraActive = true
+                    }, label: {
                         ZStack {
-                            Image("profilePicPlaceholder")
+                            profileImage?
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 118, height: 118)
-                            .clipShape(Circle())
+                                .clipShape(Circle())
                             Color(hex: 0x000000, alpha: 0.25)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 118, height: 118)
-                            .clipShape(Circle())
+                                .clipShape(Circle())
                             Image(systemName: "camera")
                                 .resizable()
                                 .frame(width: 32, height: 28, alignment: .center)
                                 .foregroundColor(.white)
+                                .sheet(
+                                    isPresented: $isCameraActive, onDismiss: nil) {
+                                        SUImagePickerView(
+                                            sourceType: .camera,
+                                            image: $profileImage,
+                                            isPresented: $isCameraActive
+                                        )
+                                    }
                             
                         }
                     }).padding(.bottom, 20)
@@ -42,11 +57,19 @@ struct EditProfileScreen: View {
                 }.padding(.bottom, 18.0)
             }
         }
+        .onAppear(perform: {
+            if let savedImage = profileImageRetriever.retrieveUiImage(named: "profile_photo") {
+                profileImage = Image(uiImage: savedImage)
+            } else {
+                print("No saved image")
+            }
+        })
     }
 }
 
 struct EditProfileInputs: View {
     @State var state = EditProfileState()
+    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -55,22 +78,22 @@ struct EditProfileInputs: View {
                 placeholderText: "ejemplo@gmail.com",
                 showPlaceholder: state.email.isEmpty,
                 inputTextColor: .white) {
-                TextField("", text: $state.email)
-            }
+                    TextField("", text: $state.email)
+                }
             GameStreamAuthInput(
                 title: "Contraseña",
                 placeholderText: "Introduce tu nueva contraseña",
                 showPlaceholder: state.password.isEmpty,
                 inputTextColor: .white) {
-                SecureField("", text: $state.password)
-            }
+                    SecureField("", text: $state.password)
+                }
             GameStreamAuthInput(
                 title: "Nombre",
                 placeholderText: "Introduce tu nombre de usuario",
                 showPlaceholder: state.name.isEmpty,
                 inputTextColor: .white) {
-                SecureField("", text: $state.name)
-            }
+                    TextField("", text: $state.name)
+                }
             Button(action: updateData, label: {
                 Text("Actualizar datos".uppercased())
                     .borderBackgroundlessStyle()

@@ -67,9 +67,7 @@ struct AuthView: View {
 
 struct LogInView: View {
     
-    @State var email = ""
-    @State var password = ""
-    @State var isAuthenticated = false
+    @State var state = LogInState()
     
     var body: some View {
         ScrollView {
@@ -78,23 +76,23 @@ struct LogInView: View {
                 GameStreamAuthInput(
                     title: "Correo electrónico",
                     placeholderText: "ejemplo@gmail.com",
-                    showPlaceholder: email.isEmpty,
+                    showPlaceholder: state.email.isEmpty,
                     inputTextColor: Color.white
                 ) {
                     TextField(
                         "",
-                        text: $email
+                        text: $state.email
                     )
                 }
                 GameStreamAuthInput(
                     title: "Contraseña",
                     placeholderText: "********",
-                    showPlaceholder: password.isEmpty,
+                    showPlaceholder: state.password.isEmpty,
                     inputTextColor: Color.white
                 ) {
                     SecureField(
                         "",
-                        text: $password
+                        text: $state.password
                     )
                 }
                 Text("¿Olvidaste tu contraseña?")
@@ -102,10 +100,19 @@ struct LogInView: View {
                     .frame(maxWidth: .infinity,alignment: .trailing)
                     .foregroundColor(Color("dark_cyan"))
                     .padding(.bottom)
-                Button(action: logIn, label: {
+                Button(action: logIn) {
                     Text("Iniciar sesión".uppercased())
                         .borderBackgroundlessStyle()
-                }).padding(.bottom, 40)
+                }.padding(.bottom, 40)
+                    .alert(isPresented: $state.showUserNotFoundAlert) {
+                        Alert(
+                            title: Text("Error"),
+                            message: Text("Usuario no registrado"),
+                            dismissButton: .default(
+                                Text("Entendido")
+                            )
+                        )
+                    }
                 
                 
                 Text("Inicia sesión con redes sociales")
@@ -125,7 +132,7 @@ struct LogInView: View {
             }.frame(width: .infinity)
             NavigationLink(
                 destination: MainScreen(),
-                isActive: $isAuthenticated,
+                isActive: $state.isAuthenticated,
                 label: {
                     EmptyView()
                 }
@@ -134,9 +141,24 @@ struct LogInView: View {
     }
     
     func logIn() {
+        let userDataSaver = UserDataSaver()
+        state.isAuthenticated = userDataSaver.validate(
+            email: state.email,
+            password: state.password
+        )
         print("iniciando sesion")
-        isAuthenticated = true
     }
+}
+
+struct LogInState {
+    var email = ""
+    var password = ""
+    var isAuthenticated = false {
+        willSet {
+            showUserNotFoundAlert = !newValue
+        }
+    }
+    var showUserNotFoundAlert = false
 }
 
 struct SocialMediaLoginButton : View {
@@ -161,9 +183,8 @@ struct SocialMediaLoginButton : View {
 
 struct SignUpView: View {
     
-    @State var email = ""
-    @State var password = ""
-    @State var confirmedPassword = ""
+    @State var state = SignUpState()
+    let formValidator = SignUpFormValidator()
     
     var body: some View {
         ScrollView {
@@ -192,41 +213,50 @@ struct SignUpView: View {
                     GameStreamAuthInput(
                         title: "Correo electrónico",
                         placeholderText: "ejemplo@gmail.com",
-                        showPlaceholder: email.isEmpty,
+                        showPlaceholder: state.email.isEmpty,
                         inputTextColor: Color.white
                     ) {
                         TextField(
                             "",
-                            text: $email
+                            text: $state.email
                         )
                     }
                     GameStreamAuthInput(
                         title: "Contraseña",
                         placeholderText: "********",
-                        showPlaceholder: password.isEmpty,
+                        showPlaceholder: state.password.isEmpty,
                         inputTextColor: Color.white
                     ) {
                         SecureField(
                             "",
-                            text: $password
+                            text: $state.password
                         )
                     }
                     GameStreamAuthInput(
                         title: "Confirmar contraseña",
                         placeholderText: "********",
-                        showPlaceholder: confirmedPassword.isEmpty,
+                        showPlaceholder: state.confirmedPassword.isEmpty,
                         inputTextColor: Color.white
                     ) {
                         SecureField(
                             "",
-                            text: $confirmedPassword
+                            text: $state.confirmedPassword
                         )
                     }
-
+                    
                     Button(action: signUp, label: {
                         Text("Regístrate".uppercased())
                             .borderBackgroundlessStyle()
                     }).padding(.bottom, 40)
+                        .alert(isPresented: $state.isInvalidForm) {
+                            Alert(
+                                title: Text("Error"),
+                                message: Text(state.isValidFormTuple.1 ?? ""),
+                                dismissButton: .default(
+                                    Text("Entendido")
+                                )
+                            )
+                        }
                     
                     
                     Text("Regístrate con redes sociales")
@@ -244,6 +274,14 @@ struct SignUpView: View {
                         }
                     }.padding(.top)
                 }.frame(width: .infinity)
+                
+                NavigationLink(
+                    destination: MainScreen(),
+                    isActive: $state.isValidForm,
+                    label: {
+                        EmptyView()
+                    }
+                )
             }
         }
     }
@@ -251,9 +289,30 @@ struct SignUpView: View {
     func takePicture() {
         print("📷")
     }
-
+    
     func signUp() {
-        print("registrarse")
+        print("registrando usuario")
+        state.isValidFormTuple = formValidator.validate(
+            email: state.email,
+            password: state.password,
+            confirmedPassword: state.confirmedPassword
+        )
+        print(state.isValidFormTuple)
+        print(state.isInvalidForm)
     }
+    
+}
 
+struct SignUpState {
+    var email = ""
+    var password = ""
+    var confirmedPassword = ""
+    var isValidFormTuple: (Bool, String?) = (false, nil) {
+        willSet {
+            isValidForm = newValue.0
+            isInvalidForm = newValue.1 != nil
+        }
+    }
+    var isValidForm: Bool = false
+    var isInvalidForm: Bool = false
 }
